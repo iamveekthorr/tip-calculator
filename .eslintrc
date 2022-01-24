@@ -1,0 +1,22 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
+    "react-app"
+  ],
+  "plugins": ["@typescript-eslint"],
+  "rules": {
+    "space-before-function-paren": "off",
+    "react/no-unescaped-entities": "off",
+    "react/display-name": "off"
+  },
+  "overrides": [
+    {
+      "files": ["**/*.ts?(x)"],
+      "rules": {
+        "additional-typescript-only-rule": "warn"
+      }
+    }
+  ]
+}
