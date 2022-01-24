@@ -1,8 +1,8 @@
-import React from 'react';
+import { ReactElement } from 'react';
 import './App.css';
 
-function App() {
-  return <div className="App"></div>;
+function App(): ReactElement {
+  return <div className="App">title</div>;
 }
 
 export default App;
