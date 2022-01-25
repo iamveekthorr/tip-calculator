@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+
 *,
 *::before,
 *::after {
@@ -7,11 +9,20 @@
 }
 
 body {
-  font-family: 'Space Mono', sans-serif;
+  font-family: 'Space Mono', monospace;
+  background-color: hsl(185, 41%, 84%);
 }
 
 html {
   box-sizing: border-box;
   font-size: 62.5%;
   scroll-behavior: smooth;
+}
+
+.attribution {
+  font-size: 11px;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
 }
