@@ -42,7 +42,6 @@ const TipOptions: FC = () => {
             onClick={() => {
               dispatch(updatePill(el));
               Number(calCulateTipBasedOnPercentage());
-              console.log(`tip ${Number(calCulateTipBasedOnPercentage())}`);
             }}
             isSelected={el === pillState}
           />
