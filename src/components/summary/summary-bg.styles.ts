@@ -8,12 +8,14 @@ export const AmountAndTotalBackground = styled.div`
   display: flex;
   flex-direction: column;
   padding: 3rem;
+  margin-top: 2rem;
 
   & > *:not(:last-child) {
     margin-bottom: 7rem;
   }
 
   @media only screen and (min-width: 90em) {
+    margin-top: 0;
     width: 50%;
   }
 `;

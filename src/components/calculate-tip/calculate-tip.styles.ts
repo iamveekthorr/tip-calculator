@@ -5,6 +5,10 @@ export const CalculateTipBg = styled.div`
   flex-direction: column;
   @media only screen and (min-width: 90em) {
     width: 50%;
-    padding: 1rem;
   }
+`;
+
+export const BillLabel = styled.p`
+  font-size: 1.6rem;
+  text-transform: uppercase;
 `;
