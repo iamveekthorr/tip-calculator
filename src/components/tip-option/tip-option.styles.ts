@@ -1,3 +1,4 @@
+/* eslint-disable operator-linebreak */
 /* eslint-disable implicit-arrow-linebreak */
 import styled from 'styled-components';
 
@@ -42,7 +43,10 @@ export const TipOption = styled.input<{ isSelected?: boolean }>`
     outline: none;
   }
   ${({ isSelected }) =>
-    isSelected && `background-color: ${colors.darkGrayishCyan}`}
+    isSelected &&
+    `background-color: ${colors.coralGreen}; 
+    color:${colors.darkGrayishCyan};
+    font-weight: bold;`}
 `;
 
 export const CustomTipInput = styled(TipOption)`

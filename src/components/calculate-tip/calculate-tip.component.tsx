@@ -6,7 +6,7 @@ import {
   selectPeople,
   updateBill,
   updatePeople,
-} from '../../redux/slice/tip.slice';
+} from '../../redux/slices/tip.slice';
 
 import { useAppSelector, useAppDispatch } from '../../redux/hooks';
 

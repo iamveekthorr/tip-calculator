@@ -8,12 +8,14 @@ interface ITipState {
   people: number;
   tipAmount: number;
   bill: number;
+  total: number;
 }
 
 const initialTipState: ITipState = {
   people: 0,
   tipAmount: 0,
   bill: 0,
+  total: 0,
 };
 
 export const tipSlice = createSlice({

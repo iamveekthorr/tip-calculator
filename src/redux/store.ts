@@ -1,9 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import tipReducer from './slice/tip.slice';
+import tipReducer from './slices/tip.slice';
+import pillReducer from './slices/pill.slice';
 
 export const store = configureStore({
-  reducer: { tip: tipReducer },
+  reducer: { tip: tipReducer, pill: pillReducer },
 });
 
 // Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
