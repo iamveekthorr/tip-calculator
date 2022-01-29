@@ -9,7 +9,7 @@ import {
 
 interface ITipAndTotalProps {
   label: string;
-  price: number;
+  price: string;
 }
 
 const TipAndTotal: FC<ITipAndTotalProps> = ({ label, price }) => (

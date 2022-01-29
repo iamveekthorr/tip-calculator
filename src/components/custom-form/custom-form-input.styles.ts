@@ -28,6 +28,8 @@ export const FormInputLabel = styled.label`
   margin-bottom: 1rem;
 `;
 
+export const FormInputContainer = styled.div<{ isError?: boolean }>``;
+
 export const FormInput = styled.input`
   background-color: ${colors.lighterGrayishCyan};
   color: ${colors.darkerGrayishCyan};

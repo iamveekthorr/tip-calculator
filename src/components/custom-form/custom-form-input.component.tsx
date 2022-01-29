@@ -33,5 +33,4 @@ const CustomFormInput: FC<IFormInputProps> = ({
     </FromInputWithLabelAndSvg>
   </FormGroup>
 );
-
 export default CustomFormInput;

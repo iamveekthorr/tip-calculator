@@ -30,12 +30,18 @@ export const tipSlice = createSlice({
       ...state,
       people: payload,
     }),
+    updateTipAmount: (state, { payload }: PayloadAction<number>) => ({
+      ...state,
+      tipAmount: payload,
+    }),
   },
 });
 
-export const { updateBill, updatePeople } = tipSlice.actions;
+export const { updateBill, updatePeople, updateTipAmount } = tipSlice.actions;
 
 export const selectBill = (state: RootState): number => state.tip.bill;
 export const selectPeople = (state: RootState): number => state.tip.people;
+export const selectTipAmount = (state: RootState): number =>
+  state.tip.tipAmount;
 
 export default tipSlice.reducer;

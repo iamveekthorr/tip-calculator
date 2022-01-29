@@ -6,7 +6,7 @@ import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { AppDispatch } from '../../redux/store';
 
 import { updatePill, selectPill } from '../../redux/slices/pill.slice';
-import { selectBill } from '../../redux/slices/tip.slice';
+import { selectBill, updateTipAmount } from '../../redux/slices/tip.slice';
 
 import {
   TipOption,
@@ -24,7 +24,9 @@ const TipOptions: FC = () => {
   const billAmount = useAppSelector(selectBill);
 
   const calCulateTipBasedOnPercentage = (): number => {
-    if (Number(pillState) < 0) return 0;
+    if (Number(billAmount) < 1) {
+      return 0;
+    }
 
     return (Number(pillState) / 100) * billAmount;
   };
@@ -37,12 +39,15 @@ const TipOptions: FC = () => {
           <TipOption
             readOnly
             key={uuid()}
-            value={el}
-            type="number"
+            value={el.toString().concat('%')}
+            type="text"
             onClick={() => {
               dispatch(updatePill(el));
+
+              dispatch(
+                updateTipAmount(Number(calCulateTipBasedOnPercentage()))
+              );
               Number(calCulateTipBasedOnPercentage());
-              console.log(`tip ${Number(calCulateTipBasedOnPercentage())}`);
             }}
             isSelected={el === pillState}
           />

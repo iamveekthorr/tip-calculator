@@ -1,4 +1,11 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
+
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+
+import formatPrice from '../../utils/price-formatter';
+
+import { selectTipAmount, updateTipAmount } from '../../redux/slices/tip.slice';
+
 import Button from '../button/button.component';
 
 import TipAndTotal from '../tip-and-total/tipAndTotal.component';
@@ -8,15 +15,23 @@ import {
   TipAmountAndTotalContainer,
 } from './summary-bg.styles';
 
-const DisplayAmountAndTotal: FC = () => (
-  <AmountAndTotalBackground>
-    <TipAmountAndTotalContainer>
-      <TipAndTotal label="tip amount" price={0.0} />
-      <TipAndTotal label="total" price={0.0} />
-    </TipAmountAndTotalContainer>
+const DisplayAmountAndTotal: FC = () => {
+  const tipAmount = useAppSelector(selectTipAmount);
+  const dispatch = useAppDispatch();
 
-    <Button> reset </Button>
-  </AmountAndTotalBackground>
-);
+  useEffect(() => {
+    dispatch(updateTipAmount(tipAmount));
+  }, [tipAmount, dispatch]);
+  return (
+    <AmountAndTotalBackground>
+      <TipAmountAndTotalContainer>
+        <TipAndTotal label="tip amount" price={formatPrice(tipAmount)} />
+        <TipAndTotal label="total" price={formatPrice(tipAmount)} />
+      </TipAmountAndTotalContainer>
+
+      <Button> reset </Button>
+    </AmountAndTotalBackground>
+  );
+};
 
 export default DisplayAmountAndTotal;
