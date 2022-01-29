@@ -6,7 +6,12 @@ import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { AppDispatch } from '../../redux/store';
 
 import { updatePill, selectPill } from '../../redux/slices/pill.slice';
-import { selectBill, updateTipAmount } from '../../redux/slices/tip.slice';
+import {
+  selectBill,
+  selectPeople,
+  updateTipAmount,
+  updateTotal,
+} from '../../redux/slices/tip.slice';
 
 import {
   TipOption,
@@ -22,13 +27,20 @@ const TipOptions: FC = () => {
   const dispatch: AppDispatch = useAppDispatch();
   const pillState = useAppSelector(selectPill);
   const billAmount = useAppSelector(selectBill);
+  const people = useAppSelector(selectPeople);
 
-  const calCulateTipBasedOnPercentage = (): number => {
-    if (Number(billAmount) < 1) {
-      return 0;
+  const handleClick = (el: number): void => {
+    dispatch(updatePill(Number(el)));
+
+    if (Number(billAmount) <= 1 || Number(people) < 1) {
+      return;
     }
 
-    return (Number(pillState) / 100) * billAmount;
+    const result = (Number(!!el) / 100) * billAmount;
+
+    const total = billAmount / people;
+    dispatch(updateTipAmount(Number(result)));
+    dispatch(updateTotal(total));
   };
 
   return (
@@ -42,12 +54,7 @@ const TipOptions: FC = () => {
             value={el.toString().concat('%')}
             type="text"
             onClick={() => {
-              dispatch(updatePill(el));
-
-              dispatch(
-                updateTipAmount(Number(calCulateTipBasedOnPercentage()))
-              );
-              Number(calCulateTipBasedOnPercentage());
+              handleClick(el);
             }}
             isSelected={el === pillState}
           />

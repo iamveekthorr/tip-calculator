@@ -8,13 +8,13 @@ interface IPillState {
   isSelected: number | undefined;
 }
 
-const initialTipState: IPillState = {
+const initialPillState: IPillState = {
   isSelected: undefined,
 };
 
 export const pillSlice = createSlice({
   name: 'pill',
-  initialState: initialTipState,
+  initialState: initialPillState,
   reducers: {
     updatePill: (state, { payload }: PayloadAction<number>) => ({
       ...state,

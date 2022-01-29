@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 import { ChangeEvent, FC, ReactNode } from 'react';
 
 import {
@@ -5,12 +6,14 @@ import {
   FormGroup,
   FormInput,
   FromInputWithLabelAndSvg,
+  FormLabelContainer,
 } from './custom-form-input.styles';
 
 interface IFormInputProps {
   label: ReactNode;
   children: ReactNode;
   value: number;
+  isError?: boolean;
   handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -18,10 +21,14 @@ const CustomFormInput: FC<IFormInputProps> = ({
   label,
   children,
   value,
+  isError,
   handleChange,
 }) => (
   <FormGroup>
-    <FormInputLabel>{label}</FormInputLabel>
+    <FormLabelContainer>
+      <FormInputLabel>{label}</FormInputLabel>
+      {isError && <FormInputLabel isError>can&apos;t be 0</FormInputLabel>}
+    </FormLabelContainer>
     <FromInputWithLabelAndSvg>
       <FormInput
         type="number"
@@ -33,4 +40,5 @@ const CustomFormInput: FC<IFormInputProps> = ({
     </FromInputWithLabelAndSvg>
   </FormGroup>
 );
+
 export default CustomFormInput;

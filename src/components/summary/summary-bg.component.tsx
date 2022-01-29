@@ -4,7 +4,11 @@ import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 
 import formatPrice from '../../utils/price-formatter';
 
-import { selectTipAmount, updateTipAmount } from '../../redux/slices/tip.slice';
+import {
+  selectTipAmount,
+  selectTotal,
+  updateTipAmount,
+} from '../../redux/slices/tip.slice';
 
 import Button from '../button/button.component';
 
@@ -17,6 +21,7 @@ import {
 
 const DisplayAmountAndTotal: FC = () => {
   const tipAmount = useAppSelector(selectTipAmount);
+  const total = useAppSelector(selectTotal);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -26,7 +31,7 @@ const DisplayAmountAndTotal: FC = () => {
     <AmountAndTotalBackground>
       <TipAmountAndTotalContainer>
         <TipAndTotal label="tip amount" price={formatPrice(tipAmount)} />
-        <TipAndTotal label="total" price={formatPrice(tipAmount)} />
+        <TipAndTotal label="total" price={formatPrice(total)} />
       </TipAmountAndTotalContainer>
 
       <Button> reset </Button>

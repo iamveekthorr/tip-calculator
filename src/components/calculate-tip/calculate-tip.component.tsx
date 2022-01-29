@@ -45,6 +45,7 @@ const CalculateTip: FC = () => {
         value={numberOfPeople}
         handleChange={handlePeopleChange}
         label="number of people"
+        isError={numberOfPeople < 1}
       >
         <PersonIcon />
       </CustomFormInput>

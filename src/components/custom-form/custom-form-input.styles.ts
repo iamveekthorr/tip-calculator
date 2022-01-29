@@ -19,16 +19,23 @@ export const FromInputWithLabelAndSvg = styled.div`
   }
 `;
 
-export const FormInputLabel = styled.label`
+export const FormInputLabel = styled.label<{ isError?: boolean }>`
   color: ${colors.darkGrayishCyan};
   font-size: 1.5rem;
   font-weight: bold;
   pointer-events: none;
   text-transform: capitalize;
   margin-bottom: 1rem;
+  ${({ isError }) => isError && `color: ${colors.danger};`}
 `;
 
-export const FormInputContainer = styled.div<{ isError?: boolean }>``;
+export const FormLabelContainer = styled.div`
+  display: flex !important;
+
+  & > :first-child {
+    margin-right: auto;
+  }
+`;
 
 export const FormInput = styled.input`
   background-color: ${colors.lighterGrayishCyan};

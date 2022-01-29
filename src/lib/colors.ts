@@ -6,4 +6,5 @@ export const colors: Record<string, string> = {
   lightGrayishCyan: 'hsl(185, 41%, 84%)',
   lighterGrayishCyan: 'hsl(189, 41%, 97%)',
   coralGreen: '#9fe8df',
+  danger: '#dc3545',
 };
