@@ -30,17 +30,16 @@ const TipOptions: FC = () => {
   const people = useAppSelector(selectPeople);
 
   const handleClick = (el: number): void => {
-    dispatch(updatePill(Number(el)));
-
     if (Number(billAmount) <= 1 || Number(people) < 1) {
       return;
     }
-
-    const result = (Number(!!el) / 100) * billAmount;
-
     const total = billAmount / people;
-    dispatch(updateTipAmount(Number(result)));
+    const result: number = (el / 100) * billAmount;
+
+    dispatch(updateTipAmount(result));
+
     dispatch(updateTotal(total));
+    dispatch(updatePill(Number(el)));
   };
 
   return (
