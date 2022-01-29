@@ -11,7 +11,7 @@ export const AmountAndTotalBackground = styled.div`
   margin-top: 2rem;
 
   & > *:not(:last-child) {
-    margin-bottom: 7rem;
+    margin-bottom: 9rem;
   }
 
   @media only screen and (min-width: 90em) {

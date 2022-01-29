@@ -16,8 +16,8 @@ export const TipOptionSection = styled.div`
 `;
 
 export const TipOptionSectionAndTitle = styled.div`
-  margin-bottom: 2rem;
-  margin-top: 2rem;
+  margin-bottom: 4rem;
+  margin-top: 4rem;
 `;
 
 export const TipOptionTitle = styled.p`
