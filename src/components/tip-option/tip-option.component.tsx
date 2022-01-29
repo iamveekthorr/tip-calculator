@@ -25,7 +25,7 @@ const TipOptions: FC = () => {
   const tipOptions: number[] = [5, 10, 15, 25, 50];
 
   const dispatch: AppDispatch = useAppDispatch();
-  const pillState = useAppSelector(selectPill);
+  const activeOption = useAppSelector(selectPill);
   const billAmount = useAppSelector(selectBill);
   const people = useAppSelector(selectPeople);
 
@@ -56,7 +56,7 @@ const TipOptions: FC = () => {
             onClick={() => {
               handleClick(el);
             }}
-            isSelected={el === pillState}
+            isSelected={el === activeOption}
           />
         ))}
         <CustomTipInput placeholder="custom" type="number" />
