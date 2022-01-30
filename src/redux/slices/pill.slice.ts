@@ -6,10 +6,12 @@ import { RootState } from '../store';
 
 interface IPillState {
   isSelected: number | undefined;
+  customPill: string;
 }
 
 const initialPillState: IPillState = {
   isSelected: undefined,
+  customPill: '',
 };
 
 export const pillSlice = createSlice({
@@ -20,12 +22,18 @@ export const pillSlice = createSlice({
       ...state,
       isSelected: payload,
     }),
+    updateCustomPill: (state, { payload }: PayloadAction<string>) => ({
+      ...state,
+      customPill: payload,
+    }),
   },
 });
 
-export const { updatePill } = pillSlice.actions;
+export const { updatePill, updateCustomPill } = pillSlice.actions;
 
 export const selectPill = (state: RootState): number | undefined =>
   state.pill.isSelected;
+export const selectCustomPill = (state: RootState): string =>
+  state.pill.customPill;
 
 export default pillSlice.reducer;
