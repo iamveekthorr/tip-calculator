@@ -41,25 +41,24 @@ const TipOptions: FC = () => {
   const calculateTotal = (): number => billAmount / people;
 
   const calculateTip = (amount: number): number => (amount / 100) * billAmount;
-  const handleClick = (el: number): void => {
-    if (Number(billAmount) <= 1 || Number(people) < 1) {
-      return;
-    }
-
-    const total = calculateTotal();
-    const result: number = (el / 100) * billAmount;
-
-    dispatch(updateTipAmount(result));
-
-    dispatch(updateTotal(total));
-    dispatch(updatePill(Number(el)));
-  };
 
   const checkEmptyFields = (): boolean => {
-    if (billAmount <= 1 || people < 1) {
+    if (billAmount < 1 || people < 1) {
       return true;
     }
     return false;
+  };
+
+  const handleClick = (el: number): void => {
+    if (!checkEmptyFields()) {
+      const total = calculateTotal();
+      const result: number = (el / 100) * billAmount;
+
+      dispatch(updateTipAmount(result));
+
+      dispatch(updateTotal(total));
+      dispatch(updatePill(Number(el)));
+    }
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
