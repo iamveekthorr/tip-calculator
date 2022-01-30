@@ -21,6 +21,8 @@ import {
   updateTotal,
 } from '../../redux/slices/tip.slice';
 
+import { updateIsActive } from '../../redux/slices/button.slice';
+
 import {
   TipOption,
   TipOptionTitle,
@@ -58,11 +60,13 @@ const TipOptions: FC = () => {
 
       dispatch(updateTotal(total));
       dispatch(updatePill(Number(el)));
+      dispatch(updateIsActive(true));
     }
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
     if (!checkEmptyFields()) {
+      dispatch(updateIsActive(true));
       const amount = e.target.value;
       dispatch(updateCustomPill(amount));
       dispatch(updateTotal(calculateTotal()));

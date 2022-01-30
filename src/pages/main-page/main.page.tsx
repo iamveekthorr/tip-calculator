@@ -19,6 +19,7 @@ const Main: FC = () => (
     <footer className="attribution">
       Challenge by
       <a
+        style={{ display: 'block' }}
         href="https://www.frontendmentor.io?ref=challenge"
         target="_blank"
         rel="noreferrer"
@@ -27,6 +28,7 @@ const Main: FC = () => (
       </a>
       . Coded by
       <a
+        style={{ display: 'block' }}
         href="https://github.com/iamveekthorr"
         target="_blank"
         rel="noreferrer"

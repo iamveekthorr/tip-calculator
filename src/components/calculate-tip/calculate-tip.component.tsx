@@ -17,6 +17,7 @@ import { CalculateTipBg } from './calculate-tip.styles';
 
 import { ReactComponent as DollarSign } from '../../images/icon-dollar.svg';
 import { ReactComponent as PersonIcon } from '../../images/icon-person.svg';
+import { updateIsActive } from '../../redux/slices/button.slice';
 
 const CalculateTip: FC = () => {
   const dispatch: AppDispatch = useAppDispatch();
@@ -25,6 +26,7 @@ const CalculateTip: FC = () => {
 
   const handleBillChange = (e: ChangeEvent<HTMLInputElement>): void => {
     dispatch(updateBill(Number(e.target.value)));
+    dispatch(updateIsActive(true));
   };
 
   const handlePeopleChange = (e: ChangeEvent<HTMLInputElement>): void => {

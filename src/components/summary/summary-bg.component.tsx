@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import { FC, useEffect, useCallback } from 'react';
 
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 
@@ -8,7 +8,17 @@ import {
   selectTipAmount,
   selectTotal,
   updateTipAmount,
+  updateBill,
+  updateTotal,
+  updatePeople,
 } from '../../redux/slices/tip.slice';
+
+import { updatePill } from '../../redux/slices/pill.slice';
+
+import {
+  selectIsActive,
+  updateIsActive,
+} from '../../redux/slices/button.slice';
 
 import Button from '../button/button.component';
 
@@ -23,10 +33,21 @@ const DisplayAmountAndTotal: FC = () => {
   const tipAmount = useAppSelector(selectTipAmount);
   const total = useAppSelector(selectTotal);
   const dispatch = useAppDispatch();
+  const isButtonActive = useAppSelector(selectIsActive);
+
+  const handleReset = useCallback(() => {
+    dispatch(updatePeople(1));
+    dispatch(updateTotal(0));
+    dispatch(updateBill(0));
+    dispatch(updatePill(undefined));
+    dispatch(updateTipAmount(0));
+    dispatch(updateIsActive(false));
+  }, [dispatch]);
 
   useEffect(() => {
     dispatch(updateTipAmount(tipAmount));
   }, [tipAmount, dispatch]);
+
   return (
     <AmountAndTotalBackground>
       <TipAmountAndTotalContainer>
@@ -34,7 +55,9 @@ const DisplayAmountAndTotal: FC = () => {
         <TipAndTotal label="total" price={formatPrice(total)} />
       </TipAmountAndTotalContainer>
 
-      <Button> reset </Button>
+      <Button handleClick={handleReset} isActive={isButtonActive}>
+        reset{' '}
+      </Button>
     </AmountAndTotalBackground>
   );
 };

@@ -18,7 +18,7 @@ export const pillSlice = createSlice({
   name: 'pill',
   initialState: initialPillState,
   reducers: {
-    updatePill: (state, { payload }: PayloadAction<number>) => ({
+    updatePill: (state, { payload }: PayloadAction<number | undefined>) => ({
       ...state,
       isSelected: payload,
     }),

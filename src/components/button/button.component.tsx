@@ -1,11 +1,17 @@
-import { FC } from 'react';
+import { FC, ReactNode } from 'react';
 
 import { Btn } from './button.styles';
 
 interface IButtonProps {
-  children: string;
+  children: ReactNode;
+  isActive: boolean;
+  handleClick: () => void;
 }
 
-const Button: FC<IButtonProps> = ({ children }) => <Btn>{children}</Btn>;
+const Button: FC<IButtonProps> = ({ children, isActive, handleClick }) => (
+  <Btn isActive={isActive} onClick={handleClick}>
+    {children}
+  </Btn>
+);
 
 export default Button;
